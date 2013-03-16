@@ -3,6 +3,26 @@ package "prosody" do
   action :upgrade
 end
 
+# create missing directories and apply permissions
+["/etc/prosody/certs", "/etc/prosody/conf.avail", "/etc/prosody/conf.d"].each do |dir|
+  directory dir do
+    owner "root"
+    group "prosody"
+    mode 00750
+  end
+end
+
+# place localhost example conf in conf.avail
+template "/etc/prosody/conf.avail/localhost.cfg.lua" do
+  source "localhost.cfg.lua.erb"
+  variables :node => node, :config => node["prosody"]
+  owner "root"
+  group "prosody"
+  mode 00640
+  notifies :restart, "service[prosody]"
+end
+
+# place conf for every VirtualHost in conf.avail
 node["prosody"]["hosts"].each do |host_name,host|
   template "/etc/prosody/conf.avail/#{host_name}.cfg.lua" do
     source "virtualhost.cfg.lua.erb"
