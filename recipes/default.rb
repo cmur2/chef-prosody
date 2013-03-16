@@ -22,6 +22,14 @@ template "/etc/prosody/conf.avail/localhost.cfg.lua" do
   notifies :restart, "service[prosody]"
 end
 
+# download specified plugins into modules directory
+node["prosody"]["plugins"].each do |plugin_name,url|
+  remote_file "/usr/lib/prosody/modules/mod_#{plugin_name}.lua" do
+    source url
+    mode 00644
+  end
+end
+
 # place conf for every VirtualHost in conf.avail
 node["prosody"]["hosts"].each do |host_name,host|
   template "/etc/prosody/conf.avail/#{host_name}.cfg.lua" do

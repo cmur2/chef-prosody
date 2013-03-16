@@ -10,6 +10,11 @@ Include `recipe[prosody::default]` in your `run_list` and do further configurati
 
 If you want a more recent version of Prosody (Debian Squeeze has 0.7.0 but 0.8.2 is available from [here](http://prosody.im/download/package_repository)) you might use `recipe[prosody::use_community_repos]` to enable APT repositories maintained by the Prosody community (needs the apt cookbook).
 
+## Limitations
+
+* no support for managing the user database (cause `prosodyctl` is interactive and limited)
+* no logrotate support for **non-default** log file location
+
 ## Requirements
 
 ### Platform
@@ -20,7 +25,7 @@ It should work on all OSes that provide a (recent, versions around 0.7.0 or bett
 
 ### default
 
-Installs Prosody package, creates all necessary VirtualHost definitions in `/etc/prosody/conf.avail`, links the enabled ones into `/etc/prosody/conf.d` (directory automatically included in core config) and generates the core configuration. Finally restarts the service.
+Installs Prosody package, downloads specified additional modules by URL (`node["prosody"]["plugins"]`), creates all necessary VirtualHost definitions in `/etc/prosody/conf.avail`, links the enabled ones into `/etc/prosody/conf.d` (directory automatically included in core config) and generates the core configuration. Finally restarts the service.
 
 A working Prosody (with one VirtualHost for localhost) is configured by the default attributes.
 
