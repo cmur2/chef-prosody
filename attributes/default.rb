@@ -61,3 +61,5 @@ default[:prosody][:log] = [
 default[:prosody][:conf_enabled] = ["localhost"]
 
 default[:prosody][:hosts] = {}
+
+default[:prosody][:plugins] = {}
