@@ -1,5 +1,7 @@
 # chef-prosody
 
+[![Build Status](https://travis-ci.org/cmur2/chef-prosody.png)](https://travis-ci.org/cmur2/chef-prosody)
+
 ## Description
 
 Installs [Prosody](http://prosody.im/) (XMPP/Jabber server written in Lua) via package and configures core settings, VirtualHosts and some modules.
