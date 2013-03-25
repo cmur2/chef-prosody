@@ -15,7 +15,7 @@ end
 # place localhost example conf in conf.avail
 template "/etc/prosody/conf.avail/localhost.cfg.lua" do
   source "localhost.cfg.lua.erb"
-  variables :node => node, :config => node["prosody"]
+  variables :node => node, :config => node['prosody']
   owner "root"
   group "prosody"
   mode 00640
@@ -23,7 +23,7 @@ template "/etc/prosody/conf.avail/localhost.cfg.lua" do
 end
 
 # download specified plugins into modules directory
-node["prosody"]["plugins"].each do |plugin_name,url|
+node['prosody']['plugins'].each do |plugin_name,url|
   remote_file "/usr/lib/prosody/modules/mod_#{plugin_name}.lua" do
     source url
     mode 00644
@@ -31,7 +31,7 @@ node["prosody"]["plugins"].each do |plugin_name,url|
 end
 
 # place conf for every VirtualHost in conf.avail
-node["prosody"]["hosts"].each do |host_name,host|
+node['prosody']['hosts'].each do |host_name,host|
   template "/etc/prosody/conf.avail/#{host_name}.cfg.lua" do
     source "virtualhost.cfg.lua.erb"
     variables :node => node, :host_name => host_name, :host => host
@@ -43,7 +43,7 @@ node["prosody"]["hosts"].each do |host_name,host|
 end
 
 # link all enabled confs into conf.d which is included by prosody.cfg.lua
-node["prosody"]["conf_enabled"].each do |conf_name|
+node['prosody']['conf_enabled'].each do |conf_name|
   link "/etc/prosody/conf.d/#{conf_name}.cfg.lua" do
     to "/etc/prosody/conf.avail/#{conf_name}.cfg.lua"
     owner "root"

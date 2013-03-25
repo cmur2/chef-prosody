@@ -1,7 +1,7 @@
 
-case node[:platform]
+case node['platform']
 when "debian"
-  case node[:platform_version].to_i
+  case node['platform_version'].to_i
   when 5
     apt_repository "prosody-lenny" do
       uri "http://packages.prosody.im/debian"

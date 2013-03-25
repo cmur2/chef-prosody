@@ -1,7 +1,7 @@
-default[:prosody][:admins] = ["admin@localhost"]
-default[:prosody][:use_libevent] = false
-default[:prosody][:use_ipv6] = false
-default[:prosody][:modules_enabled] = [
+default['prosody']['admins'] = ["admin@localhost"]
+default['prosody']['use_libevent'] = false
+default['prosody']['use_ipv6'] = false
+default['prosody']['modules_enabled'] = [
   # -- Generally required --
   "roster", # Allow users to have a roster. Recommended ;)
   "saslauth", # Authentication for clients and servers. Recommended if you want to log in.
@@ -42,23 +42,23 @@ default[:prosody][:modules_enabled] = [
   # Debian: do not remove this module, or you lose syslog support
   "posix"
 ]
-default[:prosody][:modules_disabled] = [
+default['prosody][:modules_disabled] = [
   #"presence",
   #"message",
   #"iq"
 ]
-default[:prosody][:allow_registration] = false
-default[:prosody][:daemonize] = true
-default[:prosody][:pidfile] = "/var/run/prosody/prosody.pid"
-default[:prosody][:ssl][:key] = "/etc/prosody/certs/localhost.key"
-default[:prosody][:ssl][:certificate] = "/etc/prosody/certs/localhost.cert"
-default[:prosody][:log] = [
-  { :levels => ["error"], :to => "syslog" },
-  { :levels => ["error"], :to => "file", :filename => "/var/log/prosody/prosody.err" },
-  { :levels => { :min => "info" }, :to => "file", :filename => "/var/log/prosody/prosody.log" }
+default['prosody']['allow_registration'] = false
+default['prosody']['daemonize'] = true
+default['prosody']['pidfile'] = "/var/run/prosody/prosody.pid"
+default['prosody']['ssl']['key'] = "/etc/prosody/certs/localhost.key"
+default['prosody']['ssl']['certificate'] = "/etc/prosody/certs/localhost.cert"
+default['prosody']['log'] = [
+  { 'levels' => ["error"], 'to' => "syslog" },
+  { 'levels' => ["error"], 'to' => "file", 'filename' => "/var/log/prosody/prosody.err" },
+  { 'levels' => { 'min' => "info" }, 'to' => "file", 'filename' => "/var/log/prosody/prosody.log" }
 ]
 
-default[:prosody][:conf_enabled] = ["localhost"]
+default['prosody']['conf_enabled'] = ["localhost"]
 
 default[:prosody][:hosts] = {}
 
