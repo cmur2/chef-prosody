@@ -42,7 +42,7 @@ default['prosody']['modules_enabled'] = [
   # Debian: do not remove this module, or you lose syslog support
   "posix"
 ]
-default['prosody][:modules_disabled] = [
+default['prosody']['modules_disabled'] = [
   #"presence",
   #"message",
   #"iq"
@@ -60,6 +60,6 @@ default['prosody']['log'] = [
 
 default['prosody']['conf_enabled'] = ["localhost"]
 
-default[:prosody][:hosts] = {}
+default['prosody']['hosts'] = {}
 
-default[:prosody][:plugins] = {}
+default['prosody']['plugins'] = {}
