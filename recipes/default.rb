@@ -1,7 +1,5 @@
 
-package "prosody" do
-  action :upgrade
-end
+package "prosody"
 
 # create missing directories and apply permissions
 ["/etc/prosody/certs", "/etc/prosody/conf.avail", "/etc/prosody/conf.d"].each do |dir|
@@ -53,7 +51,7 @@ end
 
 template "/etc/prosody/prosody.cfg.lua" do
   source "prosody.cfg.lua.erb"
-  variables :node => node, :config => node["prosody"]
+  variables :node => node, :config => node['prosody']
   owner "root"
   group "prosody"
   mode 00640
