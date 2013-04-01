@@ -21,10 +21,12 @@ template "/etc/prosody/conf.avail/localhost.cfg.lua" do
 end
 
 # download specified plugins into modules directory
-node['prosody']['plugins'].each do |plugin_name,url|
-  remote_file "/usr/lib/prosody/modules/mod_#{plugin_name}.lua" do
-    source url
-    mode 00644
+node['prosody']['plugins'].each do |plugin_name,plugin_files|
+  plugin_files.each do |rel_path,url|
+    remote_file "/usr/lib/prosody/#{rel_path}" do
+      source url
+      mode 00644
+    end
   end
 end
 

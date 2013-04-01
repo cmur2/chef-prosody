@@ -27,7 +27,7 @@ It should work on all OSes that provide a (recent, versions around 0.7.0 or bett
 
 ### default
 
-Installs Prosody package, downloads specified additional modules by URL (`node["prosody"]["plugins"]`), creates all necessary VirtualHost definitions in `/etc/prosody/conf.avail`, links the enabled ones into `/etc/prosody/conf.d` (directory automatically included in core config) and generates the core configuration. Finally restarts the service.
+Installs Prosody package, downloads specified additional modules and auxillary files by URL (`node["prosody"]["plugins"]`), creates all necessary VirtualHost definitions in `/etc/prosody/conf.avail`, links the enabled ones into `/etc/prosody/conf.d` (directory automatically included in core config) and generates the core configuration. Finally restarts the service.
 
 A working Prosody (with one VirtualHost for localhost) is configured by the default attributes.
 

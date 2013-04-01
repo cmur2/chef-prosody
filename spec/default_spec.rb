@@ -20,10 +20,14 @@ describe 'prosody::default' do
   
   it 'downloads plugins into modules directory' do
     chef_runner.node.set['prosody']['plugins'] = {
-      "pubsub" => "http://example.org/mod_pubsub.lua"
+      "pubsub" => {
+        "modules/mod_pubsub.lua" => "http://example.org/mod_pubsub.lua",
+        "util/pubsub.lua" => "http://example.org/util/pubsub.lua"
+      }
     }
     chef_run = chef_runner.converge 'prosody::default'
     expect(chef_run).to create_remote_file("/usr/lib/prosody/modules/mod_pubsub.lua").with(:source => "http://example.org/mod_pubsub.lua")
+    expect(chef_run).to create_remote_file("/usr/lib/prosody/util/pubsub.lua").with(:source => "http://example.org/util/pubsub.lua")
   end
   
   it 'places a config for every VirtualHost in conf.avail' do
