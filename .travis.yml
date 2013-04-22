@@ -10,7 +10,3 @@ gemfile:
 before_script:
   - ln -s chef-prosody ../prosody
   - cd spec/support/; librarian-chef install; cd ../..
-
-matrix:
-  allow_failures:
-    - gemfile: spec/support/gemfiles/Gemfile.chef11
