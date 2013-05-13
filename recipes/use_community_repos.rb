@@ -6,13 +6,13 @@ when "debian"
     apt_repository "prosody-lenny" do
       uri "http://packages.prosody.im/debian"
       components ["lenny", "main"]
-      key "http://packages.prosody.im/debian/prosody.gpg"
+      key "http://prosody.im/files/prosody-debian-packages.key"
     end
   when 6
     apt_repository "prosody-squeeze" do
       uri "http://packages.prosody.im/debian"
       components ["squeeze", "main"]
-      key "http://packages.prosody.im/debian/prosody.gpg"
+      key "http://prosody.im/files/prosody-debian-packages.key"
     end
   end
 end
