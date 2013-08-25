@@ -10,7 +10,7 @@ Installs [Prosody](http://prosody.im/) (XMPP/Jabber server written in Lua) via p
 
 Include `recipe[prosody::default]` in your `run_list` and do further configuration via node attributes. 
 
-If you want a more recent version of Prosody (Debian Squeeze has 0.7.0 but 0.8.2 is available from [here](http://prosody.im/download/package_repository)) you might use `recipe[prosody::use_community_repos]` to enable APT repositories maintained by the Prosody community (needs the apt cookbook).
+If you want a more recent version of Prosody (Debian Squeeze has 0.7.0 and Wheezy has 0.8.2 but 0.9.0 is available from [here](http://prosody.im/download/package_repository) for both) you might use `recipe[prosody::use_community_repos]` to enable APT repositories maintained by the Prosody community (needs the apt cookbook).
 
 ## Limitations
 
@@ -35,7 +35,7 @@ Your minimal modifications to customize your Prosody should include specifying a
 
 ### use_community_repos
 
-If you're on Debian Squeeze (or Lenny) this will enable the Prosody community APT repository providing newer versions - include this in your `run_list` before `recipe[apt]`.
+If you're on Debian Wheezy (or Squeeze) this will enable the Prosody community APT repository providing newer versions - include this in your `run_list` before `recipe[apt]`.
 
 ## License
 
