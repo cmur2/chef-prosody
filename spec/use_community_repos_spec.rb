@@ -24,7 +24,7 @@ describe 'prosody::use_community_repos' do
     expect(chef_run).to create_file "/etc/apt/sources.list.d/prosody-squeeze.list"
   end
   
-  it 'creates prosody-squeeze list on Debian 7' do
+  it 'creates prosody-wheezy list on Debian 7' do
     chef_runner.node.automatic_attrs['platform'] = 'debian'
     chef_runner.node.automatic_attrs['platform_version'] = '7.0.0'
     chef_run = chef_runner.converge 'apt', 'prosody::use_community_repos'
