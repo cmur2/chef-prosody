@@ -57,8 +57,8 @@ pidfile = <%= @node.lua_type(@config[:pidfile]) %>;
 ssl = <%= @node.lua_type(@config[:ssl]) %>;
 
 -- Require encryption on client/server connections?
---c2s_require_encryption = false
---s2s_require_encryption = false
+c2s_require_encryption = <%= @node.lua_type(@config[:c2s_require_encryption]) %>;
+s2s_require_encryption = <%= @node.lua_type(@config[:s2s_require_encryption]) %>;
 
 -- Debian:
 --  all to var/log

@@ -52,6 +52,8 @@ default['prosody']['daemonize'] = true
 default['prosody']['pidfile'] = "/var/run/prosody/prosody.pid"
 default['prosody']['ssl']['key'] = "/etc/prosody/certs/localhost.key"
 default['prosody']['ssl']['certificate'] = "/etc/prosody/certs/localhost.crt"
+default['prosody']['c2s_require_encryption'] = false
+default['prosody']['s2s_require_encryption'] = false
 default['prosody']['log'] = [
   { 'levels' => ["error"], 'to' => "syslog" },
   { 'levels' => ["error"], 'to' => "file", 'filename' => "/var/log/prosody/prosody.err" },
