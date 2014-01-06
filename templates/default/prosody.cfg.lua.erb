@@ -57,8 +57,19 @@ pidfile = <%= @node.lua_type(@config[:pidfile]) %>;
 ssl = <%= @node.lua_type(@config[:ssl]) %>;
 
 -- Require encryption on client/server connections?
-c2s_require_encryption = <%= @node.lua_type(@config[:c2s_require_encryption]) %>;
-s2s_require_encryption = <%= @node.lua_type(@config[:s2s_require_encryption]) %>;
+<%= "c2s_require_encryption = #{@node.lua_type(@config[:c2s_require_encryption])};" if @config.key?(:c2s_require_encryption) %>
+<%= "s2s_require_encryption = #{@node.lua_type(@config[:s2s_require_encryption])};" if @config.key?(:s2s_require_encryption) %>
+
+<%= "allow_anonymous_s2s = #{@node.lua_type(@config[:allow_anonymous_s2s])};" if @config.key?(:allow_anonymous_s2s) %>
+
+-- Set the default security policy for s2s connections:
+<%= "s2s_secure_auth = #{@node.lua_type(@config[:s2s_secure_auth])};" if @config.key?(:s2s_secure_auth) %>
+
+-- These hosts are allowed to authenticate via weaker mechanisms, such as dialback:
+<%= "s2s_insecure_domains = #{@node.lua_type(@config[:s2s_insecure_domains])};" if @config.key?(:s2s_insecure_domains) %>
+
+-- Whatever the value of s2s_secure_auth, these domains must always present valid certificates:
+<%= "s2s_secure_domains = #{@node.lua_type(@config[:s2s_secure_domains])};" if @config.key?(:s2s_secure_domains) %>
 
 -- Debian:
 --  all to var/log
