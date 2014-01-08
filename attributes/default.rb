@@ -54,10 +54,10 @@ default['prosody']['ssl']['key'] = "/etc/prosody/certs/localhost.key"
 default['prosody']['ssl']['certificate'] = "/etc/prosody/certs/localhost.crt"
 default['prosody']['c2s_require_encryption'] = false
 default['prosody']['s2s_require_encryption'] = false
-#default['prosody']['allow_anonymous_s2s'] = false
-#default['prosody']['s2s_secure_auth'] = false
-#default['prosody']['s2s_insecure_domains'] = []
-#default['prosody']['s2s_secure_domains'] = []
+default['prosody']['allow_anonymous_s2s'] = false
+default['prosody']['s2s_secure_auth'] = false
+default['prosody']['s2s_insecure_domains'] = []
+default['prosody']['s2s_secure_domains'] = []
 default['prosody']['log'] = [
   { 'levels' => ["error"], 'to' => "syslog" },
   { 'levels' => ["error"], 'to' => "file", 'filename' => "/var/log/prosody/prosody.err" },
