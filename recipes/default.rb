@@ -32,9 +32,8 @@ end
 
 # place conf for every VirtualHost in conf.avail
 node['prosody']['hosts'].each do |host_name,host|
-  template "/etc/prosody/conf.avail/#{host_name}.cfg.lua" do
-    source "virtualhost.cfg.lua.erb"
-    variables :node => node, :host_name => host_name, :host => host
+  file "/etc/prosody/conf.avail/#{host_name}.cfg.lua" do
+    content node.generate_virtualhost_cfg(host_name)
     owner "root"
     group "prosody"
     mode 00640
@@ -51,9 +50,8 @@ node['prosody']['conf_enabled'].each do |conf_name|
   end
 end
 
-template "/etc/prosody/prosody.cfg.lua" do
-  source "prosody.cfg.lua.erb"
-  variables :node => node, :config => node['prosody']
+file "/etc/prosody/prosody.cfg.lua" do
+  content node.generate_prosody_cfg
   owner "root"
   group "prosody"
   mode 00640

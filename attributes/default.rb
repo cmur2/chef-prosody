@@ -1,7 +1,7 @@
-default['prosody']['admins'] = ["admin@localhost"]
-default['prosody']['use_libevent'] = false
-default['prosody']['use_ipv6'] = false
-default['prosody']['modules_enabled'] = [
+default['prosody']['main']['admins'] = ["admin@localhost"]
+default['prosody']['main']['use_libevent'] = false
+default['prosody']['main']['use_ipv6'] = false
+default['prosody']['main']['modules_enabled'] = [
   # -- Generally required --
   "roster", # Allow users to have a roster. Recommended ;)
   "saslauth", # Authentication for clients and servers. Recommended if you want to log in.
@@ -42,23 +42,23 @@ default['prosody']['modules_enabled'] = [
   # Debian: do not remove this module, or you lose syslog support
   "posix"
 ]
-default['prosody']['modules_disabled'] = [
+default['prosody']['main']['modules_disabled'] = [
   #"presence",
   #"message",
   #"iq"
 ]
-default['prosody']['allow_registration'] = false
-default['prosody']['daemonize'] = true
-default['prosody']['pidfile'] = "/var/run/prosody/prosody.pid"
-default['prosody']['ssl']['key'] = "/etc/prosody/certs/localhost.key"
-default['prosody']['ssl']['certificate'] = "/etc/prosody/certs/localhost.crt"
-default['prosody']['c2s_require_encryption'] = false
-default['prosody']['s2s_require_encryption'] = false
-default['prosody']['allow_anonymous_s2s'] = false
-default['prosody']['s2s_secure_auth'] = false
-default['prosody']['s2s_insecure_domains'] = []
-default['prosody']['s2s_secure_domains'] = []
-default['prosody']['log'] = [
+default['prosody']['main']['allow_registration'] = false
+default['prosody']['main']['daemonize'] = true
+default['prosody']['main']['pidfile'] = "/var/run/prosody/prosody.pid"
+default['prosody']['main']['ssl']['key'] = "/etc/prosody/certs/localhost.key"
+default['prosody']['main']['ssl']['certificate'] = "/etc/prosody/certs/localhost.crt"
+default['prosody']['main']['c2s_require_encryption'] = false
+default['prosody']['main']['s2s_require_encryption'] = false
+#default['prosody']['main']['allow_anonymous_s2s'] = false
+#default['prosody']['main']['s2s_secure_auth'] = false
+#default['prosody']['main']['s2s_insecure_domains'] = []
+#default['prosody']['main']['s2s_secure_domains'] = []
+default['prosody']['main']['log'] = [
   { 'levels' => ["error"], 'to' => "syslog" },
   { 'levels' => ["error"], 'to' => "file", 'filename' => "/var/log/prosody/prosody.err" },
   { 'levels' => { 'min' => "info" }, 'to' => "file", 'filename' => "/var/log/prosody/prosody.log" }
