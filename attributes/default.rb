@@ -1,3 +1,4 @@
+default['prosody']['package'] = 'prosody'
 default['prosody']['main']['admins'] = ["admin@localhost"]
 default['prosody']['main']['use_libevent'] = false
 default['prosody']['main']['use_ipv6'] = false

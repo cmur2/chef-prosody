@@ -1,5 +1,5 @@
 
-package "prosody"
+package node['prosody']['package']
 
 # create missing directories and apply permissions
 ["/etc/prosody/certs", "/etc/prosody/conf.avail", "/etc/prosody/conf.d"].each do |dir|
