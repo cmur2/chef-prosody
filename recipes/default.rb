@@ -23,9 +23,17 @@ end
 # download specified plugins into modules directory
 node['prosody']['plugins'].each do |plugin_name,plugin_files|
   plugin_files.each do |rel_path,url|
-    remote_file "/usr/lib/prosody/#{rel_path}" do
-      source url
-      mode 00644
+    if url.nil?
+      directory "/usr/lib/prosody/#{rel_path}" do
+        mode 00755
+        notifies :restart, "service[prosody]"
+      end
+    else
+      remote_file "/usr/lib/prosody/#{rel_path}" do
+        source url
+        mode 00644
+        notifies :restart, "service[prosody]"
+      end
     end
   end
 end
