@@ -1,4 +1,5 @@
 
+package "lua-sec"
 package node['prosody']['package']
 
 # create missing directories and apply permissions

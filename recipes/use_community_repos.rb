@@ -21,5 +21,17 @@ when "debian"
       components ["wheezy", "main"]
       key "http://prosody.im/files/prosody-debian-packages.key"
     end
+  when 8
+    apt_repository "prosody-jessie" do
+      uri "http://packages.prosody.im/debian"
+      components ["jessie", "main"]
+      key "http://prosody.im/files/prosody-debian-packages.key"
+    end
+  when 9
+    apt_repository "prosody-stretch" do
+      uri "http://packages.prosody.im/debian"
+      components ["stretch", "main"]
+      key "http://prosody.im/files/prosody-debian-packages.key"
+    end
   end
 end
